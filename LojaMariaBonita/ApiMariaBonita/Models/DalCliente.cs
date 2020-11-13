@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
+using System.Diagnostics;
 
 namespace LojaMariaBonita.Models
 {
@@ -18,7 +19,7 @@ namespace LojaMariaBonita.Models
             try
             {
                 List<Cliente> _clientes = new List<Cliente>();
-
+               
                 SqlConnection con = new SqlConnection(@"Server=DESKTOP-4HDF6K5;Database=DBMariaBonita;User Id=sa;Password=01061999;");
                 con.Open();
 
@@ -48,10 +49,10 @@ namespace LojaMariaBonita.Models
                 return _clientes;
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
-                throw;
+                Debug.Write(e.Message);
+                throw new Exception("Serviço está fora, tente novamente mais tarde!",e);
             }
 
         }
@@ -89,10 +90,10 @@ namespace LojaMariaBonita.Models
                 return cliente;
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
-                throw;
+                Debug.Write(e.Message);
+                throw new Exception("Serviço está fora, tente novamente mais tarde!", e);
             }
 
         }
@@ -129,9 +130,10 @@ namespace LojaMariaBonita.Models
 
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                throw;
+                Debug.Write(e.Message);
+                throw new Exception("Serviço está fora, tente novamente mais tarde!", e);
             }
 
         }
@@ -164,10 +166,10 @@ namespace LojaMariaBonita.Models
                 cmd.ExecuteNonQuery();
                 con.Close();
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
-                throw;
+                Debug.Write(e.Message);
+                throw new Exception("Serviço está fora, tente novamente mais tarde!", e);
             }
 
         }
@@ -187,10 +189,10 @@ namespace LojaMariaBonita.Models
                 cmd.ExecuteNonQuery();
                 con.Close();
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
-                throw;
+                Debug.Write(e.Message);
+                throw new Exception("Serviço está fora, tente novamente mais tarde!", e);
             }
 
         }
