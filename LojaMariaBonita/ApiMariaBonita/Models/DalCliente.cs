@@ -145,11 +145,12 @@ namespace LojaMariaBonita.Models
             {
                 SqlConnection con = new SqlConnection(@"Server=DESKTOP-4HDF6K5;Database=DBMariaBonita;User Id=sa;Password = 01061999;");
 
-                string sql = "Update tblClientes set Nome = @Nome,@Telefone,@DataNasc,@Email,@CEP," +
-                    "@Estado,@Cidade,@Bairro,@Rua,@Numero,@PontoRef where Id = @Id";
+                string sql = "Update tblClientes set Nome = @Nome,Telefone = @Telefone,DataNasc = @DataNasc,Email = @Email,CEP = @CEP," +
+                    "Estado = @Estado,Cidade = @Cidade,Bairro = @Bairro,Rua = @Rua,Numero = @Numero,PontoRef = @PontoRef where Id = @Id";
                 SqlCommand cmd = new SqlCommand(sql, con);
 
                 cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@Id", id);
                 cmd.Parameters.AddWithValue("@Nome", cliente.Nome);
                 cmd.Parameters.AddWithValue("@Telefone", cliente.Telefone);
                 cmd.Parameters.AddWithValue("@DataNasc", cliente.DataNasc);
